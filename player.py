@@ -8,7 +8,7 @@ class Player(pygame.sprite.Sprite):
         super().__init__()
         self.import_character_assets()
         self.frame_index = 0
-        self.animation_speed = 0.04
+        self.animation_speed = 0.35
         self.image = self.animations["idle"][self.frame_index]
         self.rect = self.image.get_rect(topleft=pos)
 
@@ -31,7 +31,7 @@ class Player(pygame.sprite.Sprite):
             self.animations[animation] = import_folder(full_path)
 
     def animate(self):
-        animation = self.animations["idle"]
+        animation = self.animations["jump"]
 
         self.frame_index += self.animation_speed
         if self.frame_index >= len(animation):
