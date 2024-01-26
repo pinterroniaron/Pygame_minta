@@ -43,6 +43,16 @@ class Level:
                     y = row_index * tile_size
                     tile = Grass((x, y), tile_size)
                     self.tiles.add(tile)
+                if cell == "F":
+                    x = coll_index * tile_size
+                    y = row_index * tile_size
+                    tile = Snow_dirt((x, y), tile_size)
+                    self.tiles.add(tile)
+                if cell == "H":
+                    x = coll_index * tile_size
+                    y = row_index * tile_size
+                    tile = Snow((x, y), tile_size)
+                    self.tiles.add(tile)
 
     def run(self):
         self.tiles.update(self.world_shift)

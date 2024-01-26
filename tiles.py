@@ -36,3 +36,21 @@ class Grass(pygame.sprite.Sprite):
 
     def update(self, x_shift):
         self.rect.x += x_shift
+
+class Snow_dirt(pygame.sprite.Sprite):
+    def __init__(self, pos: int, size: int):
+        super().__init__()
+        self.image = pygame.image.load("graphics/map/blocks/snow_dirt.png")
+        self.rect = self.image.get_rect(topleft=pos)
+
+    def update(self, x_shift):
+        self.rect.x += x_shift
+
+class Snow(pygame.sprite.Sprite):
+    def __init__(self, pos: int, size: int):
+        super().__init__()
+        self.image = pygame.image.load("graphics/map/blocks/snow.png")
+        self.rect = self.image.get_rect(topleft=pos)
+
+    def update(self, x_shift):
+        self.rect.x += x_shift
