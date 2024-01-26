@@ -31,7 +31,7 @@ class Player(pygame.sprite.Sprite):
             self.animations[animation] = import_folder(full_path)
 
     def animate(self):
-        animation = self.animations["jump"]
+        animation = self.animations["run"]
 
         self.frame_index += self.animation_speed
         if self.frame_index >= len(animation):
