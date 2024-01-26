@@ -2,7 +2,7 @@ import pygame
 
 from player import Player
 from settings import *
-from tiles import Tile
+from tiles import *
 
 
 class Level:
@@ -28,6 +28,11 @@ class Level:
                     y = row_index * tile_size
                     player_sprite = Player((x, y))
                     self.player.add(player_sprite)
+                if cell == "S":
+                    x = coll_index * tile_size
+                    y = row_index * tile_size
+                    tile = Sand((x, y), tile_size)
+                    self.tiles.add(tile)
 
     def run(self):
         self.tiles.update(self.world_shift)
