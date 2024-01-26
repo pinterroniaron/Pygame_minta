@@ -28,10 +28,20 @@ class Level:
                     y = row_index * tile_size
                     player_sprite = Player((x, y))
                     self.player.add(player_sprite)
+                if cell == "T":
+                    x = coll_index * tile_size
+                    y = row_index * tile_size
+                    tile = Sand_top((x, y), tile_size)
+                    self.tiles.add(tile)
                 if cell == "S":
                     x = coll_index * tile_size
                     y = row_index * tile_size
                     tile = Sand((x, y), tile_size)
+                    self.tiles.add(tile)
+                if cell == "G":
+                    x = coll_index * tile_size
+                    y = row_index * tile_size
+                    tile = Grass((x, y), tile_size)
                     self.tiles.add(tile)
 
     def run(self):
