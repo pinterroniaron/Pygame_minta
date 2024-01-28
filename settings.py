@@ -1,18 +1,18 @@
-level_map = [
-    "                                   ",
-    "                                   ",
-    "                                   ",
-    "                                   ",
-    "                                   ",
-    " GG    GGG             TT          ",
-    " XX P                           H  ",
-    " XXGG         GG         TT     HH ",
-    " XXXX       GG                     ",
-    " XX    G  GGXX     GG  TT      HH  ",
-    "       X  XXXX     XX  SST     HHHH",
-    "    GGGX  XXXXGG   XX  SSST    FFFF",
-    " GGGXXXX  XXXXXX   XX  SSSS    XXXX",
-    " XXXXXXX  XXXXXX   XX  SSSS    XXXX",
+level_map: list[str] = [
+    "                                                   ",
+    "                                                   ",
+    "                                                   ",
+    "                                                   ",
+    "                                                   ",
+    "                                                   ",
+    "                                                   ",
+    "                                                   ",
+    "                        P                    H  HHH",
+    "      TT  TT    G    GGGG       G    HH     HHHHHHH",
+    "TTT  TSS  SS  G X  GGXXXX     GGXG  HHH   HHHHHHHHH",
+    "SSSTTSSS  SS  XGX  XXXXXXG  GGXXXX  FFF   FFFFFFFFF",
+    " SSSSSSS  SS  XXX  XXXXXX  XXXXXXX  XXX    XXXXXXXX",
+    "  SSSSSS  SS  XXX  XXXXX  XXXXXXXX  XXXXX XXXXXXXXX",
 ]
 
 tile_size = 64
