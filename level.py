@@ -83,7 +83,7 @@ class Level:
 
     def run(self):
         Cloud.random_cloud(self.clouds_group, width, height)#random felhő generálás
-        self.clouds_group.update() #felhő update
+        self.clouds_group.update(self.scroll_x()) #felhő update
         self.clouds_group.draw(self.display_surface) #felhő rajzolás
         Cloud.remove_offscreen_clouds(self.clouds_group)# kitörli a már nem képernyőn lévő felhőket
 
@@ -112,6 +112,8 @@ class Level:
         else:
             self.world_shift = 0
             player.speed = 8
+
+        return self.world_shift
 
     def horizontal_movement_collision(self):
         player = self.player.sprite
