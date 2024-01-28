@@ -1,5 +1,4 @@
-import pygame, sys
-
+import pygame
 from level import Level
 from settings import *
 
@@ -14,7 +13,7 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-            
+
     screen.fill(sky)
 
     level.run()

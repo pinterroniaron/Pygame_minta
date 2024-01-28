@@ -53,6 +53,32 @@ class Level:
                     y = row_index * tile_size
                     tile = Snow((x, y), tile_size)
                     self.tiles.add(tile)
+                if cell == "M":
+                    x = coll_index * tile_size
+                    y = row_index * tile_size
+                    tile = melting_snow((x, y), tile_size)
+                    self.tiles.add(tile)
+                if cell == "W":
+                    x = coll_index * tile_size
+                    y = row_index * tile_size
+                    tile = water((x, y), tile_size)
+                    self.tiles.add(tile)
+                if cell == "B":
+                    x = coll_index * tile_size
+                    y = row_index * tile_size
+                    tile = water_bottom((x, y), tile_size)
+                    self.tiles.add(tile)
+                if cell == "D":
+                    x = coll_index * tile_size
+                    y = row_index * tile_size
+                    tile = melting_dirt((x, y), tile_size)
+                    self.tiles.add(tile)
+                if cell == "g":
+                    x = coll_index * tile_size
+                    y = row_index * tile_size
+                    tile = melting_grass((x, y), tile_size)
+                    self.tiles.add(tile)
+
 
     def run(self):
         self.tiles.update(self.world_shift)
