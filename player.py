@@ -10,12 +10,13 @@ class Player(pygame.sprite.Sprite):
         self.frame_index = 0
         self.status = "idle"
         self.animation_speed = 0.35
+        self.animation_speed_idle = 0.05
         self.image = self.animations["idle"][self.frame_index]
         self.rect = self.image.get_rect(topleft=pos)
 
         self.direction = pygame.math.Vector2(0, 0)
         self.speed = 8
-        self.gravity = 0.8
+        self.gravity = 0.6
         self.jump_speed = -16
         self.facing_left = True
         self.on_ground = False
@@ -39,7 +40,11 @@ class Player(pygame.sprite.Sprite):
     def animate(self):
         animation = self.animations[self.status]
 
-        self.frame_index += self.animation_speed
+        if self.status == "idle":
+            self.frame_index += self.animation_speed_idle
+        else:
+            self.frame_index += self.animation_speed
+
         if self.frame_index >= len(animation):
             self.frame_index = 0
 
