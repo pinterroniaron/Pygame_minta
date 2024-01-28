@@ -1,14 +1,15 @@
 import pygame
-
+from cloud import *
 from player import Player
 from settings import *
 from tiles import *
 
 
 class Level:
-    def __init__(self, level_data, surface):
+    def __init__(self, level_data, surface, clouds_group):
         self.display_surface = surface
         self.setup_level(level_data)
+        self.clouds_group = clouds_group
 
         self.world_shift = 0
 
@@ -81,6 +82,11 @@ class Level:
 
 
     def run(self):
+        Cloud.random_cloud(self.clouds_group, width, height)#random felhő generálás
+        self.clouds_group.update() #felhő update
+        self.clouds_group.draw(self.display_surface) #felhő rajzolás
+        Cloud.remove_offscreen_clouds(self.clouds_group)# kitörli a már nem képernyőn lévő felhőket
+
         self.tiles.update(self.world_shift)
         self.tiles.draw(self.display_surface)
         self.scroll_x()
@@ -89,6 +95,8 @@ class Level:
         self.player.draw(self.display_surface)
         self.horizontal_movement_collision()
         self.vertical_movement_collision()
+
+
 
     def scroll_x(self):
         player = self.player.sprite

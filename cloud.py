@@ -33,7 +33,6 @@ class Cloud(pygame.sprite.Sprite):
                 break
 
 #problémák:
-                #-a felhők a játékos és a blokkok eéőtt vanna
                 #-ha mozog a kamera, akkor a felhők is mozognak fele együtt
                 #-meg kell csinálni, hogy több felhő is generálódjon
                 #-a felhő hitbox-a négyzet alakú nem pedig a felhő alakja

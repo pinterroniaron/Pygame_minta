@@ -5,8 +5,8 @@ from settings import *
 
 screen = pygame.display.set_mode((width, height))
 clock = pygame.time.Clock()
-level = Level(level_map, screen)
 clouds_group = pygame.sprite.Group()
+level = Level(level_map, screen, clouds_group)
 
 
 
@@ -29,10 +29,6 @@ while running:
 
     level.run()
 
-    Cloud.random_cloud(clouds_group, width, height)#random felhő generálás
-    clouds_group.update() #felhő update
-    clouds_group.draw(screen) #felhő rajzolás
-    Cloud.remove_offscreen_clouds(clouds_group)# kitörli a már nem képernyőn lévő felhőket
 
     pygame.display.update()
     clock.tick(60)
