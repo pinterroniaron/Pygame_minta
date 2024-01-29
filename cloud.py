@@ -3,7 +3,10 @@ import random
 import pygame
 
 
+
 class Cloud(pygame.sprite.Sprite):
+    counter: int = 0
+    last_counter: int = None
     def __init__(self, image, x, y):
         super().__init__()
         self.image = image
@@ -25,7 +28,7 @@ class Cloud(pygame.sprite.Sprite):
             "graphics/map/clouds/cloud_1.png"
         ).convert_alpha()
 
-        if random.randint(0, 100) < 2:  # Felhő esély
+        if random.randint(0, 100) < 2:  # Felhő gyakoriság
             new_cloud = Cloud(cloud_image, width, random.randint(0, height - 500))
             group.add(new_cloud)
 
@@ -40,6 +43,7 @@ class Cloud(pygame.sprite.Sprite):
         for cloud in group:
             if cloud.rect.collidepoint(pos):
                 group.remove(cloud)
+                Cloud.counter += 1
                 break
 
 
