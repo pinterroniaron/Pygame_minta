@@ -16,6 +16,7 @@ sky = (135,206,235)
 
 running = True
 while running:
+    
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
@@ -29,22 +30,16 @@ while running:
                 clouds_group.empty()
                 level = Level(level_map, screen, clouds_group)
 
-
-
     if Cloud.counter != Cloud.last_counter:
         game_font = pygame.font.Font(None, 60)
         text_surf = game_font.render(f'Felrobbantott felhők száma: {Cloud.counter}', True, font_colour)
         text_rect = text_surf.get_rect(center=(width/2, 50))
         Cloud.last_counter = Cloud.counter
-    
-
-
-
 
     screen.fill(sky)
-    screen.blit(text_surf, text_rect)
     level.run()
-    pygame.display.update()
+    screen.blit(text_surf, text_rect)
+    pygame.display.update()    
     clock.tick(60)
 
 pygame.quit()
