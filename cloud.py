@@ -1,20 +1,19 @@
 import random
-
 import pygame
+from pygame.sprite import Sprite, Group
 
-
-
-class Cloud(pygame.sprite.Sprite):
+class Cloud(Sprite):
     counter: int = 0
     last_counter: int = None
-    def __init__(self, image, x, y):
-        super().__init__()
-        self.image = image
-        self.rect = self.image.get_rect()
-        self.rect.x = x
-        self.rect.y = y
 
-    def update(self, speed):
+    def __init__(self, image: pygame.Surface, x: int, y: int) -> None:
+        super().__init__()
+        self.image: pygame.Surface = image
+        self.rect: pygame.Rect = self.image.get_rect()
+        self.rect.x: int = x
+        self.rect.y: int = y
+
+    def update(self, speed: int) -> None:
         if speed == 8:
             self.rect.x += 7.2
         elif speed == -8:
@@ -23,28 +22,30 @@ class Cloud(pygame.sprite.Sprite):
             self.rect.x += -1
 
     @staticmethod
-    def random_cloud(group, width, height):
-        cloud_image = pygame.image.load(
+    def random_cloud(group: Group, width: int, height: int) -> None:
+        cloud_image: pygame.Surface = pygame.image.load(
             "graphics/map/clouds/cloud_1.png"
         ).convert_alpha()
 
         if random.randint(0, 100) < 2:  # Felhő gyakoriság
-            new_cloud = Cloud(cloud_image, width, random.randint(0, height - 500))
+            new_cloud: Cloud = Cloud(cloud_image, width, random.randint(0, height - 500))
             group.add(new_cloud)
 
     @staticmethod
-    def remove_offscreen_clouds(group):
+    def remove_offscreen_clouds(group: Group) -> None:
         for cloud in group.copy():
             if cloud.rect.right < 0:
                 group.remove(cloud)
 
     @staticmethod
-    def handle_click(pos, group):
+    def handle_click(pos: tuple, group: Group) -> None:
         for cloud in group:
             if cloud.rect.collidepoint(pos):
                 group.remove(cloud)
                 Cloud.counter += 1
                 break
+
+
 
 
 # problémák:

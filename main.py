@@ -1,20 +1,21 @@
 import pygame
-from cloud import * 
+from cloud import Cloud
 from level import Level
-from settings import *
+from settings import width, height, level_map
 
-pygame.init()  # Initialize pygame
-pygame.font.init()  # Initialize the font module
+pygame.init()
+pygame.font.init()
 
-screen = pygame.display.set_mode((width, height))
-clock = pygame.time.Clock()
-clouds_group = pygame.sprite.Group()
-level = Level(level_map, screen, clouds_group)
-font_colour = (0,0,0)
+screen: pygame.Surface = pygame.display.set_mode((width, height))
+clock: pygame.time.Clock = pygame.time.Clock()
+clouds_group: pygame.sprite.Group = pygame.sprite.Group()
+level: Level = Level(level_map, screen, clouds_group)
 
-sky = (135,206,235)
+font_colour = (0, 0, 0)
 
-running = True
+sky = (135, 206, 235)
+
+running: bool = True
 while running:
     
     for event in pygame.event.get():
@@ -31,9 +32,9 @@ while running:
                 level = Level(level_map, screen, clouds_group)
 
     if Cloud.counter != Cloud.last_counter:
-        game_font = pygame.font.Font(None, 60)
-        text_surf = game_font.render(f'Felrobbantott felhők száma: {Cloud.counter}', True, font_colour)
-        text_rect = text_surf.get_rect(center=(width/2, 50))
+        game_font: pygame.font.Font = pygame.font.Font(None, 60)
+        text_surf: pygame.Surface = game_font.render(f'Felrobbantott felhők száma: {Cloud.counter}', True, font_colour)
+        text_rect: pygame.Rect = text_surf.get_rect(center=(width/2, 50))
         Cloud.last_counter = Cloud.counter
 
     screen.fill(sky)
