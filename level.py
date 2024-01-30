@@ -28,8 +28,8 @@ class Level:
         self.world_shift: int = 0
 
     def setup_level(self, layout: list[str]) -> None:
-        self.tiles: pygame.sprite.Group[Tile] = pygame.sprite.Group()
-        self.player: pygame.sprite.GroupSingle[Player] = pygame.sprite.GroupSingle()
+        self.tiles = pygame.sprite.Group()
+        self.player = pygame.sprite.GroupSingle()
 
         for row_index, row in enumerate(layout):
             for coll_index, cell in enumerate(row):

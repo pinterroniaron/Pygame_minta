@@ -38,7 +38,7 @@ class Cloud(Sprite):
                 group.remove(cloud)
 
     @staticmethod
-    def handle_click(pos: tuple, group: Group) -> None:
+    def handle_click(pos: tuple[int,int], group: Group) -> None:
         for cloud in group:
             if cloud.rect.collidepoint(pos):
                 group.remove(cloud)

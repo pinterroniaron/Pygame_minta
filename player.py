@@ -6,7 +6,7 @@ from support import import_folder
 
 
 class Player(pygame.sprite.Sprite):
-    def __init__(self, pos: List[int]) -> None:
+    def __init__(self, pos: tuple[int,int]) -> None:
         super().__init__()
         self.import_character_assets()
         self.frame_index: float = 0
