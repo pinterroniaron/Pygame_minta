@@ -4,14 +4,14 @@ from pygame.sprite import Sprite, Group
 
 class Cloud(Sprite):
     counter: int = 0
-    last_counter: int = None
+    last_counter = None
 
     def __init__(self, image: pygame.Surface, x: int, y: int) -> None:
         super().__init__()
         self.image: pygame.Surface = image
         self.rect: pygame.Rect = self.image.get_rect()
-        self.rect.x: int = x
-        self.rect.y: int = y
+        self.rect.x = x
+        self.rect.y = y
 
     def update(self, speed: int) -> None:
         if speed == 8:

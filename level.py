@@ -19,13 +19,15 @@ from tiles import (
 
 
 class Level:
-    def __init__(self, level_data: list, surface: pygame.Surface, clouds_group):
+    def __init__(
+        self, level_data: list[str], surface: pygame.Surface, clouds_group: None
+    ):
         self.display_surface: pygame.Surface = surface
         self.setup_level(level_data)
         self.clouds_group = clouds_group
         self.world_shift: int = 0
 
-    def setup_level(self, layout: list) -> None:
+    def setup_level(self, layout: list[str]) -> None:
         self.tiles: pygame.sprite.Group[Tile] = pygame.sprite.Group()
         self.player: pygame.sprite.GroupSingle[Player] = pygame.sprite.GroupSingle()
 
@@ -34,8 +36,8 @@ class Level:
                 if cell == "X":
                     x: int = coll_index * tile_size
                     y: int = row_index * tile_size
-                    tile: Tile = Tile((x, y), tile_size)
-                    self.tiles.add(tile)
+                    tile_X: Tile = Tile((x, y))
+                    self.tiles.add(tile_X)
                 if cell == "P":
                     x: int = coll_index * tile_size
                     y: int = row_index * tile_size
@@ -44,53 +46,53 @@ class Level:
                 if cell == "T":
                     x: int = coll_index * tile_size
                     y: int = row_index * tile_size
-                    tile: Sand_top = Sand_top((x, y), tile_size)
-                    self.tiles.add(tile)
+                    tile_T: Sand_top = Sand_top((x, y))
+                    self.tiles.add(tile_T)
                 if cell == "S":
                     x: int = coll_index * tile_size
                     y: int = row_index * tile_size
-                    tile: Sand = Sand((x, y), tile_size)
-                    self.tiles.add(tile)
+                    tile_S: Sand = Sand((x, y))
+                    self.tiles.add(tile_S)
                 if cell == "G":
                     x: int = coll_index * tile_size
                     y: int = row_index * tile_size
-                    tile: Grass = Grass((x, y), tile_size)
-                    self.tiles.add(tile)
+                    tile_G: Grass = Grass((x, y))
+                    self.tiles.add(tile_G)
                 if cell == "F":
                     x: int = coll_index * tile_size
                     y: int = row_index * tile_size
-                    tile: Snow_dirt = Snow_dirt((x, y), tile_size)
-                    self.tiles.add(tile)
+                    tile_F: Snow_dirt = Snow_dirt((x, y))
+                    self.tiles.add(tile_F)
                 if cell == "H":
                     x: int = coll_index * tile_size
                     y: int = row_index * tile_size
-                    tile: Snow = Snow((x, y), tile_size)
-                    self.tiles.add(tile)
+                    tile_H: Snow = Snow((x, y))
+                    self.tiles.add(tile_H)
                 if cell == "M":
                     x: int = coll_index * tile_size
                     y: int = row_index * tile_size
-                    tile: melting_snow = melting_snow((x, y), tile_size)
-                    self.tiles.add(tile)
+                    tile_M: melting_snow = melting_snow((x, y))
+                    self.tiles.add(tile_M)
                 if cell == "W":
                     x: int = coll_index * tile_size
                     y: int = row_index * tile_size
-                    tile: water = water((x, y), tile_size)
-                    self.tiles.add(tile)
+                    tile_W: water = water((x, y))
+                    self.tiles.add(tile_W)
                 if cell == "B":
                     x: int = coll_index * tile_size
                     y: int = row_index * tile_size
-                    tile: water_bottom = water_bottom((x, y), tile_size)
-                    self.tiles.add(tile)
+                    tile_B: water_bottom = water_bottom((x, y))
+                    self.tiles.add(tile_B)
                 if cell == "D":
                     x: int = coll_index * tile_size
                     y: int = row_index * tile_size
-                    tile: melting_dirt = melting_dirt((x, y), tile_size)
-                    self.tiles.add(tile)
+                    tile_D: melting_dirt = melting_dirt((x, y))
+                    self.tiles.add(tile_D)
                 if cell == "g":
                     x: int = coll_index * tile_size
                     y: int = row_index * tile_size
-                    tile: melting_grass = melting_grass((x, y), tile_size)
-                    self.tiles.add(tile)
+                    tile_g: melting_grass = melting_grass((x, y))
+                    self.tiles.add(tile_g)
 
     def run(self) -> None:
         Cloud.random_cloud(self.clouds_group, width, height)  # random felhő generálás
@@ -109,7 +111,7 @@ class Level:
         self.horizontal_movement_collision()
         self.vertical_movement_collision()
 
-    def scroll_x(self) -> int:
+    def scroll_x(self) -> float:
         player: Player = self.player.sprite
         player_x: int = player.rect.centerx
         direction_x: float = player.direction.x
