@@ -116,10 +116,10 @@ class Level:
         player_x: int = player.rect.centerx
         direction_x: float = player.direction.x
 
-        if player_x < width / 4 and direction_x < 0:
+        if player_x < width / 2 and direction_x < 0:
             self.world_shift = 8
             player.speed = 0
-        elif player_x > width - (width / 4) and direction_x > 0:
+        elif player_x > width - (width / 2) and direction_x > 0:
             self.world_shift = -8
             player.speed = 0
         else:
