@@ -17,12 +17,12 @@ from tiles import (
     water_bottom,
 )
 
-
 class Level:
     def __init__(
         self, level_data: list[str], surface: pygame.Surface, clouds_group: None
     ):
         self.display_surface: pygame.Surface = surface
+        self.tiles_dict = {}
         self.setup_level(level_data)
         self.clouds_group = clouds_group
         self.world_shift: int = 0
@@ -78,6 +78,7 @@ class Level:
                     y: int = row_index * tile_size
                     tile_W: water = water((x, y))
                     self.tiles.add(tile_W)
+                    self.tiles_dict[(x, y)] = tile_W
                 if cell == "B":
                     x: int = coll_index * tile_size
                     y: int = row_index * tile_size
@@ -110,6 +111,18 @@ class Level:
         self.player.draw(self.display_surface)
         self.horizontal_movement_collision()
         self.vertical_movement_collision()
+
+
+
+    def check_water_block(self, time: int) -> None:
+        player: Player = self.player.sprite
+        player_rect = player.rect
+        player_rect_bottom_center = player_rect.bottomleft[0] + player_rect.width // 2, player_rect.bottom
+
+        for pos, tile in self.tiles_dict.items():
+            if tile.rect.collidepoint(player_rect_bottom_center):
+                with open("records.txt", "a", encoding="utf-8") as file:
+                    file.write(f"{str(time)}\n")
 
     def scroll_x(self) -> float:
         player: Player = self.player.sprite

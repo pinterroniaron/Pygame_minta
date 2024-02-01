@@ -3,6 +3,7 @@ import pygame
 from cloud import Cloud
 from level import Level
 from settings import width, height, level_map
+from player import Player
 
 pygame.init()
 pygame.font.init()
@@ -11,17 +12,22 @@ screen: pygame.Surface = pygame.display.set_mode((width, height))
 clock: pygame.time.Clock = pygame.time.Clock()
 clouds_group: pygame.sprite.Group = pygame.sprite.Group()
 level: Level = Level(level_map, screen, clouds_group)
-
-
 font_colour = (0, 0, 0)
 sky = (135, 206, 235)
 running: bool = True
 best = 1000000
 best_time = 0
 prev_time = 0
+counter = 0
+
+
 
 while running:
-    time = (int(pygame.time.get_ticks() / 1000) - prev_time)
+    time = int(pygame.time.get_ticks() / 1000) - prev_time
+
+    if best != 1000000:
+        best_time = best
+
 
     with open("records.txt", "r", encoding="utf-8") as file:
         for line in file:
@@ -29,8 +35,12 @@ while running:
             if number < best:
                 best = number
 
-    if best != 1000000:
-        best_time = best
+
+
+    counter += 1
+    if counter % 30 == 0:
+        level.check_water_block(time)
+        counter = 0
 
 
     for event in pygame.event.get():
@@ -46,9 +56,7 @@ while running:
                 clouds_group.empty()
                 level = Level(level_map, screen, clouds_group)
                 prev_time += time
-            elif event.key == pygame.K_t:
-                with open("records.txt", "a", encoding="utf-8") as file:
-                    file.write(f"{str(time)}\n")
+
 
 
 

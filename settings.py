@@ -8,11 +8,11 @@ level_map: list[str] = [
     "HHHHHHHH                                        F                  HH  XXXXXXX      XX       GGGG                                                          G  X      XX  TT    TSSSSS    TTS                   S    S   S    S      ",
     "HHHHHHHH             H           HH     HH                         FF                        XXXX                          GGG                          G  X         XX  S     SSSSS     SSS                    SSSS     SSSS       ",
     "HHHHHHHH           HHHHH       FFFF     FF                    HHH                            XXXX                  GGG     XXX                       G  X            XX  S    TSSSSS     SSS                                        ",
-    "HHHHHHHH P   HH    HHHHHH                                     FFF                            XXXX   GGG          GGXXX                            G  X               XX  S    SSSSSST      S                                        ",
+    "HHHHHHHHP    HH    HHHHHH                                     FFF                            XXXX   GGG          GGXXX                            G  X               XX  S    SSSSSST      S                                        ",
     "HHHHHHHHHHH  HHH   HHHHHH                              HHH                                   XXXX   XXX    GG    XXXXX                         G  X                  XX  SSSSSSSSSSSS      S                                        ",
     "HHHHHHHHHHHHHHHH   HHHHHH    HHHHHHH           HHH     FFF                                   XXXX          XX                               G  X                     XX                  TTS                                        ",
-    "FFFFFFFFFFFFFFFF   FFFFFF    FFFFFFF   FFF     FFF                                           XXXX                                        G  X                        XX                  SSS           TTTTTTTTTTTTTTTTTTTTTT       ",
-    "XXXXXXXXXXXXXXXX   XXXXXX    XXXXXXX                                                         XXXX                                     GGGX                           XXXSSSSSSSSSSSSS    SSS           SSSSSSSSSSSSSSSSSSSSSS       ",
+    "FFFFFFFFFFFFFFFF   FFFFFF    FFFFFFF   FFF     FFF                                           XXXX                                        G  X                        XX                  SSS          WWWWWWWWWWWWWWWWWWWWWWW       ",
+    "XXXXXXXXXXXXXXXX   XXXXXX    XXXXXXX                                                         XXXX                                     GGGX                           XXXSSSSSSSSSSSSS    SSS          SSSSSSSSSSSSSSSSSSSSSSS       ",
 ]
 
 #T = sand_top
@@ -23,7 +23,7 @@ level_map: list[str] = [
 #H = snow
 #F = snow_dirt
 #M = melting_snow
-#W = water
+#W = winner
 #B = water_bottom
 #D = melting_dirt
 #g = melting grass
