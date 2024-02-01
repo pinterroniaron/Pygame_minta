@@ -34,7 +34,7 @@ while running:
     if Cloud.counter != Cloud.last_counter:
         game_font: pygame.font.Font = pygame.font.Font(None, 60)
         text_surf: pygame.Surface = game_font.render(f'Felrobbantott felhők száma: {Cloud.counter}', True, font_colour)
-        text_rect: pygame.Rect = text_surf.get_rect(center=(width/2, 50))
+        text_rect: pygame.Rect = text_surf.get_rect(center=(400, 50))
         Cloud.last_counter = Cloud.counter
 
     screen.fill(sky)
