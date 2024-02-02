@@ -75,6 +75,10 @@ while running:
         text_rect: pygame.Rect = text_surf.get_rect(center=(400, 50))
         Cloud.last_counter = Cloud.counter
 
+    keys = pygame.key.get_pressed()
+    if keys[pygame.K_ESCAPE]:
+        running = False
+
 
     screen.fill(sky)
     level.run()
