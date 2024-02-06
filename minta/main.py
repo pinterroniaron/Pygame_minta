@@ -19,7 +19,7 @@ kacsa_rect = kacsa.get_rect(center=(WIDTH / 2, HEIGHT / 2))
 
 running = True
 while running:
-    screen.fill((140, 137, 246))
+    screen.fill((140, 150, 200))
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
